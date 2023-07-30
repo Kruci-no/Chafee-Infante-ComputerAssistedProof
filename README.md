@@ -1,5 +1,5 @@
 # Chafee-Infante-ComputerAssistedProof
-    The code is used for computer assisted proof of existence of periodic orbit and its atraction for the non-autonomous Chafee-Infante system:
+The code is used for computer assisted proof of existence of periodic orbit and its atraction for the non-autonomous Chafee-Infante system:
     Display equation: $$u_t = u_{xx} + \lambda u - (A+B\sin(\omega t))u^3,$$
     where solution $u(x,t):[0,\pi]\times[t_0,T]\to \mathbb{R}$ satisfies Dirichlet boundary solutions, where $A,B\in\mathbb{R}$ and $\lambda,\omega\in \mathbb{R}.$
     We work in the Fourier base that is we write every point from the phase space in the form
