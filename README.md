@@ -23,6 +23,7 @@ $$
 - Parameters ${\lambda,\omega,A,B}$ are taken from file ChafeeInfante\textFiles\params.txt in the form 
  ```
 {2,6.28318530718,1.5,1}
+-------------
 {lambda,omega,A,B}
 ```
 ## ChafeeInfante\sampleDyn.cpp
@@ -32,7 +33,8 @@ Program for numerical integrating the Chafee-Infante system program. </br>
 - File ChafeeInfante\textFiles\sampleDynOptions.txt contains options for the program: 
 ```
 0 1 2000 
-Optionas for: starting time, duration of symulation, number of steps
+-------------
+starting time, duration of symulation, number of steps
 ```
 - After runing program should output sampled point from the trajectory of initial is saved to file ChafeeInfante\textFiles\sampleDynOutPut.txt
 
@@ -48,6 +50,24 @@ $$
 
  ## ChafeeInfante\CAProof.cpp
  Program for proving the existence of periodic orbit and showing local attraction of this orbit.
- Program cheaks if some set $X_0$ there holds 
+ Program cheaks if some defined set $X_0$ there holds
+ 
 $$ T(X_0)\subset X_0$$
-if so 
+if the condition is validated the existence is of periodic orbit is validated. Then program is trying to prove that it is locally attracting.  Namelly it is cheaking if:
+
+$$
+||\frac{\partial T}{\partial x}(X_0)||_{C_0}< 1.
+$$
+- The set is centered arround the initial condtion form file ChafeeInfante\textFiles\initialValue.txt
+- File ChafeeInfante\textFiles\sampleDynOptions.txt contains options for the setting of the computed assisted proof for example:
+```
+1e-4 1 3 
+6 14
+9 17 0
+-------------
+eps , C, s
+mainC0Size, fullC0Size
+mainC1Size, fullC1Size
+
+```
+
