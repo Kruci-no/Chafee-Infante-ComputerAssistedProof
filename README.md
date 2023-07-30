@@ -4,7 +4,7 @@ The code is used for computer assisted proof of existence of periodic orbit and 
     where solution $u(x,t):[0,\pi]\times[t_0,T]\to \mathbb{R}$ satisfies Dirichlet boundary solutions, where $A,B\in\mathbb{R}$ and $\lambda,\omega\in \mathbb{R}.$
 We work in the Fourier base that is we write every point from the phase space in the form
 
-$$ u = \sum_{i=1}^\infty u_i\sin(ix).$$ 
+$$ u^0 = \sum_{i=1}^\infty u_i^0\sin(ix).$$ 
 
 Code contains 3 programs:
 - ChafeeInfante\sampleDyn,
@@ -70,4 +70,18 @@ mainC0Size, fullC0Size
 mainC1Size, fullC1Size
 
 ```
+- The set $X_0$ is defined by the following way
+  $$X^0 = X_P^0 + X_Q^0,$$
+with
 
+
+$$
+X_P^0 =\{u^*(x)+eps*\sum_{i=1}^n [-1,1] \sin((2i-1)x)\},
+$$
+
+
+and
+
+$$
+    X_Q^0 = \{ u\in Y: u_i\in\frac{[-1,1]}{i^s}, \text{for $i$ odd and $i>7$},\; u_i = 0 \;\text{otherwise} \}.
+$$
