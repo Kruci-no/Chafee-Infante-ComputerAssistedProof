@@ -83,7 +83,8 @@ The computation of derivatives employs a rigorous C1 integration algorithm.
 
 Here are some details about the program and its inputs:
 
-- The set $X^0$ is centered around an initial condition $u^0$ read from `ChafeeInfante\textFiles\initialValue.txt`.
+- The set $X^0$ is centered around an initial condition $u^0$ read from `ChafeeInfante\textFiles\initialValue.txt`,
+- It assumes that parameter $\omega = 2\pi$, so the value of $\omega$ in file `ChafeeInfante\textFiles\params.txt` does not matter.
 - Options for setting up the assisted proof can be found in `ChafeeInfante\textFiles\sampleDynOptions.txt`, including parameters such as:
 ```
 1e-4 1 3 
