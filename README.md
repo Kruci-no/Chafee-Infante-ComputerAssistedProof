@@ -116,13 +116,16 @@ $$
    CAPDBINDIR = ../capd-capdDynSys-5.1.2/bin/
    
    ```
-- Folder DissipativePDE contains tool for rigrous integration of PDEs
-  -  Folder DissipativePDE\Algebra contains the structure infinite series used in the algorithm and implemetation of operation for them
-  -  Folder DissipativePDE\Set contains the structure for sets which are used in the rigrous integration.
-  -  Folder DissipativePDE\VectorField contains the structure for VectorField used in the rigrous integration.
-  -  Folder DissipativePDE\VectorFieldMaker contains the additional methods which allow to produce the vector field fields for the Gallerking projection in the form of string used in CAPD IMap class.
-  -  Folder DissipativePDE\SolverPDE contains methods and structs for rigrous C0 and C1 integration. 
-
+- Folder DissipativePDE contains tool for rigrous integration of PDEs:
+  -  Folder DissipativePDE\Algebra contains the structure infinite series used in the algorithm and implemetation of operation for them,
+  -  Folder DissipativePDE\Set contains the structure for sets which are used in the rigrous integration,
+  -  Folder DissipativePDE\VectorField contains the structure for VectorField used in the rigrous integration,
+  -  Folder DissipativePDE\VectorFieldMaker contains the additional methods which allow to produce the vector field fields for the Gallerking projection in the form of string used in CAPD IMap class,
+  -  Folder DissipativePDE\SolverPDE contains methods and structs for rigrous C0 and C1 integration,
+- Folder Utils contains mainly InPut OutPut settings
+- Folder ChafeeInfante contains code dedicated specyfically for the Chafee-Infante:
+   - Folder ChafeeInfante\ChafeeInfanteVecField contains  C0 and C1 vectorfields used in rigrous integration
+   - Folder ChafeeInfante\GallerkinProjections contains the method to produce string, used in IMap class, for Gallerkin projection of the Chafee-Infante equation.
 
 
 
