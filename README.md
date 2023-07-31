@@ -17,9 +17,11 @@ The programs uses data from files:
 {2.,-0.5, 0.125,0.3} - Format of initial data
 ```
 would represent initial data in the form
+
 $$
-u_0 = 2\sin(x)  -0.5\sin(3x) - 0.125\sin(5x)+ 0.3\sin(7x)
+u^0 = 2\sin(x)  -0.5\sin(3x) - 0.125\sin(5x)+ 0.3\sin(7x).
 $$
+
 - Parameters ${\lambda,\omega,A,B}$ are taken from file ChafeeInfante\textFiles\params.txt in the form 
  ```
 {2,6.28318530718,1.5,1}
@@ -39,7 +41,7 @@ starting time, duration of symulation, number of steps
 - After runing program should output sampled point from the trajectory of initial is saved to file ChafeeInfante\textFiles\sampleDynOutPut.txt
 
 ## ChafeeInfante\findPeriodicPoint
-Program for finding periodic orbit of the Chafee-Infate equation. It try to find fixed periodic point by iterating the Gallerkin aproximation of the map
+Program for finding periodic orbit of the Chafee-Infate equation . It try to find fixed periodic point by iterating the Gallerkin aproximation of the map
 
 $$
 T(u_0) = u(1,0;u_0).
@@ -53,12 +55,13 @@ $$
  Program cheaks if some defined set $X_0$ there holds
  
 $$ T(X_0)\subset X_0$$
-if the condition is validated the existence is of periodic orbit is validated. Then program is trying to prove that it is locally attracting.  Namelly it is cheaking if:
+if the condition is validated the existence is of periodic orbit is validated. For computation of image it is using C0 rigrous algorithm of integration of pdes. Then program is trying to prove that it is locally attracting.  Namelly it is cheaking if:
 
 $$
 ||\frac{\partial T}{\partial x}(X_0)||_{C_0}< 1.
 $$
-- The set is centered arround the initial condtion form file ChafeeInfante\textFiles\initialValue.txt
+The computation of derivative is done by C1 algorithm of rigrous integration.
+- The set is centered arround the initial condtion $u^0$ form file ChafeeInfante\textFiles\initialValue.txt,
 - File ChafeeInfante\textFiles\sampleDynOptions.txt contains options for the setting of the computed assisted proof for example:
 ```
 1e-4 1 3 
@@ -72,16 +75,18 @@ mainC1Size, fullC1Size
 ```
 - The set $X_0$ is defined by the following way
   $$X^0 = X_P^0 + X_Q^0,$$
+  
 with
-
-
-$$
-X_P^0 =\{u^*(x)+eps*\sum_{i=1}^n [-1,1] \sin((2i-1)x)\},
-$$
-
+$$X_P^0 =u^0(x)+ [-1,1]eps*\sum_{i=1}^n  \sin((2i-1)x),$$
 
 and
 
 $$
-    X_Q^0 = \{ u\in Y: u_i\in\frac{[-1,1]}{i^s}, \text{for $i$ odd and $i>7$},\; u_i = 0 \;\text{otherwise} \}.
+    X_Q^0 = \sum_{i=n+1}\frac{C[-1,1]}{(2i-1)^s} \sin((2i-1) x).
 $$
+
+where $n$ depends on the size of initial condtiodin.
+For the proof of existence of attracting orbit we can set
+mainC0Size -  the number of modes taken for the differential inclusion,
+fullC0Size - the number of modes represented exsplicitly.
+
