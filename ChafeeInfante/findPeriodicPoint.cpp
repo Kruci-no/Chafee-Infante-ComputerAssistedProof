@@ -80,6 +80,7 @@ int main(){
     InOut inOut;
     DVector  params;
 	inOut.paramsFile >> params;
+    params[1] = 6.28318530718;
     //cout << Params;
     DVector initialValue;
     inOut.initialValueFile >> initialValue;
