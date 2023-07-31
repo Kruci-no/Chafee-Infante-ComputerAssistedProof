@@ -86,7 +86,14 @@ $$
 $$
 
 where $n$ depends on the size of initial condtiodin.
-For the proof of existence of attracting orbit we can set
+
+For the C0 computation we set:
 mainC0Size -  the number of modes taken for the differential inclusion,
 fullC0Size - the number of modes represented exsplicitly.
+The rigrous C0 integration is done in odd subspace of Fourier coefficients.
+
+For the C1 we set
+mainC1Size -  the number of modes taken for the differential inclusion,
+fullC1Size - the number of modes represented exsplicitly.
+
 
