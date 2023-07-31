@@ -108,14 +108,20 @@ $$
 $$
 
  ## The code informations
-- The programs are using the [CAPD library](http://capd.ii.uj.edu.pl/index.php ) - Tool for nonrigorous and validated numerics for dynamical systems.
-  - Used version of library 5.1.2
-  - Makefile assumes that the CAPD library is in the following position with respect to main directiory
+- The programs are using the [CAPD library](http://capd.ii.uj.edu.pl/index.php) - Tool for nonrigorous and validated numerics for dynamical systems.
+  - Used version of library 5.1.2,
+  - Makefile assumes that the CAPD library is in the following position with respect to main directiory,
    ```
    # directory where capd scripts are (e.g. capd-config)
    CAPDBINDIR = ../capd-capdDynSys-5.1.2/bin/
    
    ```
+- Folder DissipativePDE contains tool for rigrous integration of PDEs
+  -  Folder DissipativePDE\Algebra contains the structure infinite series used in the algorithm and implemetation of operation for them
+  -  Folder DissipativePDE\Set contains the structure for sets which are used in the rigrous integration.
+  -  Folder DissipativePDE\VectorField contains the structure for VectorField used in the rigrous integration.
+  -  Folder DissipativePDE\VectorFieldMaker contains the additional methods which allow to produce the vector field fields for the Gallerking projection in the form of string used in CAPD IMap class.
+  -  Folder DissipativePDE\SolverPDE contains methods and structs for rigrous C0 and C1 integration. 
 
 
 
