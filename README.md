@@ -55,11 +55,13 @@ $$
  Program cheaks if some defined set $X_0$ there holds
  
 $$ T(X_0)\subset X_0$$
+
 if the condition is validated the existence is of periodic orbit is validated. For computation of image it is using C0 rigrous algorithm of integration of pdes. Then program is trying to prove that it is locally attracting.  Namelly it is cheaking if:
 
 $$
 ||\frac{\partial T}{\partial x}(X_0)||_{C_0}< 1.
 $$
+
 The computation of derivative is done by C1 algorithm of rigrous integration.
 - The set is centered arround the initial condtion $u^0$ form file ChafeeInfante\textFiles\initialValue.txt,
 - File ChafeeInfante\textFiles\sampleDynOptions.txt contains options for the setting of the computed assisted proof for example:
@@ -70,7 +72,7 @@ The computation of derivative is done by C1 algorithm of rigrous integration.
 -------------
 eps , C, s
 mainC0Size, fullC0Size
-mainC1Size, fullC1Size
+mainC1Size, fullC1Size, expColumns
 
 ```
 - The set $X_0$ is defined by the following way
@@ -82,18 +84,43 @@ $$X_P^0 =u^0(x)+ [-1,1]eps*\sum_{i=1}^n  \sin((2i-1)x),$$
 and
 
 $$
-    X_Q^0 = \sum_{i=n+1}\frac{C[-1,1]}{(2i-1)^s} \sin((2i-1) x).
+    X_Q^0 = \sum_{i=n+1}^\infty\frac{C[-1,1]}{(2i-1)^s} \sin((2i-1) x).
 $$
 
 where $n$ depends on the size of initial condtiodin.
 
-For the C0 computation we set:
-mainC0Size -  the number of modes taken for the differential inclusion,
-fullC0Size - the number of modes represented exsplicitly.
-The rigrous C0 integration is done in odd subspace of Fourier coefficients.
+- For the C0 computation we set:
+   - mainC0Size -  the number of modes taken for the differential inclusion,
+   - fullC0Size - the number of modes represented exsplicitly.
+- The rigrous C0 integration is done in odd subspace of Fourier coefficients.
 
-For the C1 we set
-mainC1Size -  the number of modes taken for the differential inclusion,
-fullC1Size - the number of modes represented exsplicitly.
+- For the C1 we set:
+   - mainC1Size -  the number of modes taken for the differential inclusion for each variable $(u,h)$ ,
+   - fullC1Size - the number of modes represented exsplicitly for each variable $(u,h)$ ,
+   - expColumns - number of columns of the derivative computed explicitly.
+
+- The rigrous C1 integration is done in full space not in the Odd subspace.
+- For C1 integration we have variables the variational eqation, so the real number of modes takes for differetial incusion is 2*mainC1Size and the number of modes represented explicitly is equal to 2*fullC1Size.
+- Rest of the columns are computed by commansing them to the one set  the form
+
+$$
+    X^{0,h} = \sum_{i=expColumns+1}^\infty u_i \sin(ix),\quad \text{where }u_i\in[-1,1].
+$$
+
+ ## The code informations
+- The programs are using the [CAPD library](http://capd.ii.uj.edu.pl/index.php ) - Tool for nonrigorous and validated numerics for dynamical systems.
+  - Used version of library 5.1.2
+  - Makefile assumes that the CAPD library is in the following position with respect to main directiory
+   ```
+   # directory where capd scripts are (e.g. capd-config)
+   CAPDBINDIR = ../capd-capdDynSys-5.1.2/bin/
+   
+   ```
+
+
+
+
+  
+
 
 
