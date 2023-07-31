@@ -204,20 +204,22 @@ $$
 
 ## ChafeeInfante\CAProof.cpp
 
-Program for proving the existence of a periodic orbit and showing local attraction of this orbit. The program checks if some defined set $X_0$ holds the condition:
+This program is designed to prove the existence of a periodic orbit and demonstrate its local attraction. It does so by checking whether a defined set $X_0$ satisfies the following condition:
 
 $$ T(X_0) \subset X_0 $$
 
-If this condition is validated, then the existence of a periodic orbit is confirmed. For computation of the image, it uses a C0 rigorous algorithm for integration of PDEs. The program also tries to prove that the orbit is locally attracting by checking:
+If this condition is satisfied, it confirms the existence of a periodic orbit. The program utilizes a rigorous C0 algorithm for integrating partial differential equations (PDEs) to compute the image. Additionally, it attempts to prove that the orbit is locally attracting by verifying:
 
 $$
 ||\frac{\partial T}{\partial x}(X_0)||_{C_0} < 1.
 $$
 
-The computation of derivatives is done using a C1 algorithm for rigorous integration.
+The computation of derivatives employs a rigorous C1 integration algorithm.
 
-- The set is centered around the initial condition $u^0$ from file `ChafeeInfante\textFiles\initialValue.txt`.
-- File `ChafeeInfante\textFiles\sampleDynOptions.txt` contains options for setting up the computed assisted proof, such as:
+Here are some details about the program and its inputs:
+
+- The set $X_0$ is centered around an initial condition $u^0$ read from `ChafeeInfante\textFiles\initialValue.txt`.
+- Options for setting up the assisted proof can be found in `ChafeeInfante\textFiles\sampleDynOptions.txt`, including parameters such as:
 ```
 1e-4 1 3 
 6 14
@@ -229,10 +231,10 @@ mainC1Size, fullC1Size, expColumns
 
 ```
 - The set $X_0$ is defined as follows:
-   $$X^0 = X_P^0 + X_Q^0,$$
+   $$X^0 = X_P^o + X_Q^o,$$
   
-with
-$$X_P^0 = u^o(x)+ [-1,1]eps*\sum_{i=1}^n \sin((2i-1)x),$$
+where
+$$X_P^o = u^o(x)+ [-1,1]eps*\sum_{i=1}^n \sin((2i-1)x),$$
 
 and
 
@@ -240,21 +242,22 @@ $$
     X_Q^o = \sum_{i=n+11}^\infty \frac{C[-11]}{(2i-11)^s}\sin((2i-11)x).
 $$
 
-where $n$ depends on the size of the initial condition.
+Here, $n$ depends on the size of the initial condition.
 
-- For C0 computation, we set:
-   - `mainC0Size` - the number of modes taken for the differential inclusion,
-   - `fullC0Size` - the number of modes represented explicitly.
-- The rigorous C0 integration is done in the odd subspace of Fourier coefficients.
+- For C0 computation, the parameters are set as follows:
+   - `mainC0Size`: The number of modes considered for the differential inclusion.
+   - `fullC0Size`: The number of modes explicitly represented.
+   
+The rigorous C0 integration is performed in the odd subspace of Fourier coefficients.
 
-- For C1, we set:
-   - `mainC1Size` -  the number of modes taken for the differential inclusion for each variable $(u,h)$ ,
-   - `fullC1Size` -  the number of modes represented explicitly for each variable $(u,h)$ ,
-   - `expColumns` - number of columns where derivatives are computed explicitly.
+- For C1 computation, the parameters are set as follows:
+   - `mainC1Size`: The number of modes considered for each variable $(u,h)$ in the differential inclusion.
+   - `fullC1Size`: The number of modes explicitly represented for each variable $(u,h)$.
+   - `expColumns`: Number of columns where derivatives are computed explicitly.
 
-- The rigorous C1 integration is done in full space, not just in the odd subspace.
-- In C1 integration, we have variables representing variational equations. Therefore, the actual number of modes used for differential inclusion is $2 \times \text{mainC1Size}$ and the number of modes represented explicitly is $2 \times \text{fullC1Size}$.
-- The remaining columns are computed by setting them to be:
+The rigorous C1 integration is conducted in full space, not just in the odd subspace. In this case, there are variables representing variational equations. Therefore, the actual number of modes used for differential inclusion is $2 \times \text{mainC1Size}$ and the number of modes explicitly represented is $2 \times \text{fullC1Size}$.
+
+The remaining columns are computed by setting them to be:
 
 $$
     X^{o,h} = \sum_{i=\text{expColumns}+11}^\infty u_i\sin(ix),\quad \text{where } u_i\in[-11].
